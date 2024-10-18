@@ -41,6 +41,9 @@ try {
     var data_type = String(configYaml["variables"]["data_type"]);
     var data_description = String(configYaml["variables"]["data_description"]);
 
+    // Add subscription_id
+    var subscription_id = String(configYaml["variables"]["subscription_id"]);
+
     if(checkGenerateEntity(terraform_st_location)){
       terraform_st_location = location;
     }
@@ -87,6 +90,9 @@ try {
     core.setOutput("data_path", data_path);
     core.setOutput("data_type", data_type);
     core.setOutput("data_description", data_description);
+
+    // Add subscription_id output
+    core.setOutput("subscription_id", subscription_id);
   });
   
 } catch (error) {
