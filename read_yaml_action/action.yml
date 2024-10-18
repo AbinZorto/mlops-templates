@@ -1,5 +1,5 @@
 name: 'YAML Read'
-description: 'This is a NodeJS action to read YAML configuation files.'
+description: 'This is a NodeJS action to read YAML configuration files.'
 inputs:
   config:
     description: 'Config file name'
@@ -13,7 +13,7 @@ outputs:
   postfix:
     description: 'Postfix for the resource names'
   environment:
-    description: 'Enviroment of the AML workspace'
+    description: 'Environment of the AML workspace'
   enable_aml_computecluster:
     description: 'Boolean to decide whether to deploy an AML compute cluster or not'
   enable_monitoring:
@@ -35,11 +35,27 @@ outputs:
   terraform_st_resource_group:
     description: 'Terraform State Resource Group'
   terraform_st_storage_account:
-    description: "Terraform State Storage Account"
+    description: 'Terraform State Storage Account'
   terraform_st_container_name:
-    description: "Terraform State Container name"
+    description: 'Terraform State Container name'
   terraform_st_key:
     description: 'Terraform State Key'
+  environment_name:
+    description: 'Name of the environment'
+  environment_description:
+    description: 'Description of the environment'
+  environment_path:
+    description: 'Path to the environment configuration'
+  build_type:
+    description: 'Type of build (e.g., dev, stage, prod)'
+  data_name:
+    description: 'Name of the data asset'
+  data_path:
+    description: 'Path to the data asset'
+  data_type:
+    description: 'Type of the data asset'
+  data_description:
+    description: 'Description of the data asset'
 runs:
   using: 'node16'
   main: 'index.js'
