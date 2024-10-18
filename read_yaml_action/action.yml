@@ -47,7 +47,7 @@ outputs:
   environment_path:
     description: 'Path to the environment configuration'
   build_type:
-    description: 'Type of build (e.g., dev, stage, prod)'
+    description: 'Type of build (e.g. conda, docker)'
   data_name:
     description: 'Name of the data asset'
   data_path:
