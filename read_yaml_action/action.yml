@@ -6,6 +6,8 @@ inputs:
     required: true
     default: ''
 outputs:
+  subscription_id:
+    description: 'The Azure subscription ID'
   location:
     description: 'The location of the AML workspace'
   namespace:
