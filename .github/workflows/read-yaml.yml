@@ -117,9 +117,18 @@ jobs:
       - name: Checking out repo
         uses: actions/checkout@v3
       - name: Read YAML
-        uses: Azure/mlops-templates/read_yaml_action@main
+        uses: AbinZorto/mlops-templates/read_yaml_action@main
         id: read_action_js
         with:
           config: ${{ github.workspace }}/${{ inputs.file_name }}
       - name: Echo step output
-        run: echo "${{ steps.read_action_js.outputs.resource_group }} ${{ steps.read_action_js.outputs.aml_workspace }}"; echo "${{ steps.read_action_js.outputs.bep }}  ${{ steps.read_action_js.outputs.oep }}"; echo "${{ steps.read_action_js.outputs.terraform_version }}  ${{ steps.read_action_js.outputs.terraform_workingdir }}"; echo "${{ steps.read_action_js.outputs.terraform_st_resource_group }}  ${{ steps.read_action_js.outputs.terraform_st_storage_account }} " echo "${{ steps.read_action_js.outputs.terraform_st_container_name }}  ${{ steps.read_action_js.outputs.terraform_st_key }} "
+        run: |
+          echo "Resource Group: ${{ steps.read_action_js.outputs.resource_group }} AML Workspace: ${{ steps.read_action_js.outputs.aml_workspace }}"
+          echo "Batch Endpoint: ${{ steps.read_action_js.outputs.bep }} Online Endpoint: ${{ steps.read_action_js.outputs.oep }}"
+          echo "Terraform Version: ${{ steps.read_action_js.outputs.terraform_version }} Terraform Working Directory: ${{ steps.read_action_js.outputs.terraform_workingdir }}"
+          echo "Terraform State Resource Group: ${{ steps.read_action_js.outputs.terraform_st_resource_group }} Terraform State Storage Account: ${{ steps.read_action_js.outputs.terraform_st_storage_account }}"
+          echo "Terraform State Container Name: ${{ steps.read_action_js.outputs.terraform_st_container_name }} Terraform State Key: ${{ steps.read_action_js.outputs.terraform_st_key }}"
+          echo "Environment Name: ${{ steps.read_action_js.outputs.environment_name }} Environment Description: ${{ steps.read_action_js.outputs.environment_description }}"
+          echo "Environment Path: ${{ steps.read_action_js.outputs.environment_path }} Build Type: ${{ steps.read_action_js.outputs.build_type }}"
+          echo "Data Name: ${{ steps.read_action_js.outputs.data_name }} Data Path: ${{ steps.read_action_js.outputs.data_path }}"
+          echo "Data Type: ${{ steps.read_action_js.outputs.data_type }} Data Description: ${{ steps.read_action_js.outputs.data_description }}"
