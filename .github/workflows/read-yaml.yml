@@ -7,6 +7,9 @@ on:
         required: true
         type: string
     outputs:
+      subscription_id:
+        description: "The Azure subscription ID"
+        value: ${{ jobs.read-yaml.outputs.subscription_id }}
       location:
         description: "The resource group to use"
         value: ${{ jobs.read-yaml.outputs.location }}
@@ -87,6 +90,7 @@ jobs:
   read-yaml:
     runs-on: ubuntu-latest
     outputs:
+      subscription_id: ${{ steps.read_action_js.outputs.subscription_id }}
       location: ${{ steps.read_action_js.outputs.location }}
       namespace: ${{ steps.read_action_js.outputs.namespace }}
       postfix: ${{ steps.read_action_js.outputs.postfix }}
@@ -123,6 +127,7 @@ jobs:
           config: ${{ github.workspace }}/${{ inputs.file_name }}
       - name: Echo step output
         run: |
+          echo "Subscription ID: ${{ steps.read_action_js.outputs.subscription_id }}"
           echo "Resource Group: ${{ steps.read_action_js.outputs.resource_group }} AML Workspace: ${{ steps.read_action_js.outputs.aml_workspace }}"
           echo "Batch Endpoint: ${{ steps.read_action_js.outputs.bep }} Online Endpoint: ${{ steps.read_action_js.outputs.oep }}"
           echo "Terraform Version: ${{ steps.read_action_js.outputs.terraform_version }} Terraform Working Directory: ${{ steps.read_action_js.outputs.terraform_workingdir }}"
