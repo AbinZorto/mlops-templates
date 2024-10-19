@@ -85,6 +85,9 @@ on:
       data_description:
         description: "Description of the data asset"
         value: ${{ jobs.read-yaml.outputs.data_description }}
+      pipeline_file:
+        description: "Path to the pipeline file"
+        value: ${{ jobs.read-yaml.outputs.pipeline_file }}
 
 jobs:
   read-yaml:
@@ -116,6 +119,7 @@ jobs:
       data_path: ${{ steps.read_action_js.outputs.data_path }}
       data_type: ${{ steps.read_action_js.outputs.data_type }}
       data_description: ${{ steps.read_action_js.outputs.data_description }}
+      pipeline_file: ${{ steps.read_action_js.outputs.pipeline_file }}
 
     steps:
       - name: Checking out repo
@@ -139,3 +143,4 @@ jobs:
           echo "Environment Path: ${{ steps.read_action_js.outputs.environment_path }} Build Type: ${{ steps.read_action_js.outputs.build_type }}"
           echo "Data Name: ${{ steps.read_action_js.outputs.data_name }} Data Path: ${{ steps.read_action_js.outputs.data_path }}"
           echo "Data Type: ${{ steps.read_action_js.outputs.data_type }} Data Description: ${{ steps.read_action_js.outputs.data_description }}"
+          echo "Pipeline File: ${{ steps.read_action_js.outputs.pipeline_file }}"
