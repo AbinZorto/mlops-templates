@@ -121,19 +121,19 @@ jobs:
       - name: Checking out repo
         uses: actions/checkout@v3
 
-      - name: Set Subscription ID
-        run: |
-          sed -i 's/${ARM_SUBSCRIPTION_ID}/${{ secrets.ARM_SUBSCRIPTION_ID }}/g' ${{ github.workspace }}/${{ inputs.file_name }}
-
       - name: Read YAML
         uses: AbinZorto/mlops-templates/read_yaml_action@main
         id: read_action_js
+        env:
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
         with:
           config: ${{ github.workspace }}/${{ inputs.file_name }}
 
       - name: Echo step output
+        env:
+          SUBSCRIPTION_ID: ${{ steps.read_action_js.outputs.subscription_id }}
         run: |
-          echo "Subscription ID: ${{ steps.read_action_js.outputs.subscription_id }}"
+          echo "Subscription ID: $SUBSCRIPTION_ID"
           echo "Resource Group: ${{ steps.read_action_js.outputs.resource_group }} AML Workspace: ${{ steps.read_action_js.outputs.aml_workspace }}"
           echo "Batch Endpoint: ${{ steps.read_action_js.outputs.bep }} Online Endpoint: ${{ steps.read_action_js.outputs.oep }}"
           echo "Terraform Version: ${{ steps.read_action_js.outputs.terraform_version }} Terraform Working Directory: ${{ steps.read_action_js.outputs.terraform_workingdir }}"
