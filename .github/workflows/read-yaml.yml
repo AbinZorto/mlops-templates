@@ -121,10 +121,6 @@ jobs:
       - name: Checking out repo
         uses: actions/checkout@v3
 
-      - name: Set Subscription ID
-        run: |
-          sed -i 's/${ARM_SUBSCRIPTION_ID}/${{ secrets.ARM_SUBSCRIPTION_ID }}/g' ${{ github.workspace }}/${{ inputs.file_name }}
-
       - name: Read YAML
         uses: AbinZorto/mlops-templates/read_yaml_action@main
         id: read_action_js
