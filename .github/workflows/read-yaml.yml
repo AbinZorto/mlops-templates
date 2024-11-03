@@ -88,6 +88,10 @@ on:
       pipeline_file:
         description: "Path to the pipeline file"
         value: ${{ jobs.read-yaml.outputs.pipeline_file }}
+      modelname:
+        description: "Name of the model used"
+        value: ${{ jobs.read-yaml.outputs.modelname }}
+
 
 jobs:
   read-yaml:
@@ -120,6 +124,7 @@ jobs:
       data_type: ${{ steps.read_action_js.outputs.data_type }}
       data_description: ${{ steps.read_action_js.outputs.data_description }}
       pipeline_file: ${{ steps.read_action_js.outputs.pipeline_file }}
+      modelname: ${{ steps.read_action_js.outputs.modelname }}
 
     steps:
       - name: Checking out repo
@@ -144,3 +149,4 @@ jobs:
           echo "Data Name: ${{ steps.read_action_js.outputs.data_name }} Data Path: ${{ steps.read_action_js.outputs.data_path }}"
           echo "Data Type: ${{ steps.read_action_js.outputs.data_type }} Data Description: ${{ steps.read_action_js.outputs.data_description }}"
           echo "Pipeline File: ${{ steps.read_action_js.outputs.pipeline_file }}"
+          echo "Model Name: ${{ steps.read_action_js.outputs.modelname }}

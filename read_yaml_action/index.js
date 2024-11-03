@@ -41,6 +41,7 @@ try {
     var data_type = String(configYaml["variables"]["data_type"]);
     var data_description = String(configYaml["variables"]["data_description"]);
     var pipeline_file = String(configYaml["variables"]["pipeline_file"]);
+    var modelname = String(configYaml["variables"]["modelname"]);
 
     // Add subscription_id
     var subscription_id = String(configYaml["variables"]["subscription_id"]);
@@ -92,6 +93,7 @@ try {
     core.setOutput("data_type", data_type);
     core.setOutput("data_description", data_description);
     core.setOutput("pipeline_file", pipeline_file);
+    core.setOutput("modelname", modelname);
 
     // Add subscription_id output
     core.setOutput("subscription_id", subscription_id);
