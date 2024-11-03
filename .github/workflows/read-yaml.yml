@@ -149,4 +149,4 @@ jobs:
           echo "Data Name: ${{ steps.read_action_js.outputs.data_name }} Data Path: ${{ steps.read_action_js.outputs.data_path }}"
           echo "Data Type: ${{ steps.read_action_js.outputs.data_type }} Data Description: ${{ steps.read_action_js.outputs.data_description }}"
           echo "Pipeline File: ${{ steps.read_action_js.outputs.pipeline_file }}"
-          echo "Model Name: ${{ steps.read_action_js.outputs.modelname }}
+          echo "Model Name: ${{ steps.read_action_js.outputs.modelname }}"
